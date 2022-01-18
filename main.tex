@@ -170,7 +170,8 @@
         
          \[ \hat{z}(s_t) \leftarrow (1-\alpha_t) \hat{z}(s_t) + \alpha_t e^{r_t/\lambda}\hat{z}(s_{t+1}) {\color{blue} \frac {\cP(s_{t+1}|s_t)} {\hat{\pi}(s_{t+1}|s_t)}}. \]
          
-\item Once $z$ is computed, policies are derived using \[ \pi(s'|s) = \frac {\cP(s'|s)z(s')} {\sum_{s''} \cP(s''|s)z(s'')}. \]
+\item Once $z$ is computed, policies are derived using \[ \pi(s'|s) = \frac {\cP(s'|s)z(s')} {\sum_{s''} \cP(s''|s)z(s'')}\]
+    which ...
 \end{itemize}
 \end{frame}
 

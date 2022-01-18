@@ -1,0 +1,59 @@
+\begin{thebibliography}{1}
+
+\bibitem{optionkeyb}
+Andre Barreto, Diana Borsa, Shaobo Hou, Gheorghe Comanici, Eser Ayg\"{u}n,
+  Philippe Hamel, Daniel Toyama, Jonathan Hunt, Shibl Mourad, David Silver, and
+  Doina Precup.
+\newblock {The Option Keyboard: Combining Skills in Reinforcement Learning}.
+\newblock In {\em Advances in Neural Information Processing Systems 32}, pages
+  13031--13041, 2019.
+
+\bibitem{dietterich2000hierarchical}
+Thomas~G. Dietterich.
+\newblock Hierarchical reinforcement learning with the {MAXQ} value function
+  decomposition.
+\newblock {\em J. Artif. Intell. Res.}, 13:227--303, 2000.
+
+\bibitem{conf/icaps/Jonsson16}
+Anders Jonsson and Vicen\c{c} G{\'o}mez.
+\newblock {Hierarchical Linearly-Solvable Markov Decision Problems}.
+\newblock In {\em Proceedings of the 26th International Conference on Automated
+  Planning and Scheduling (ICAPS)}, 2016.
+
+\bibitem{Kaelbling93}
+Leslie~Pack Kaelbling.
+\newblock {Learning to Achieve Goals}.
+\newblock In {\em Proceedings of the International Joint Conference on
+  Artificial Intelligence (IJCAI)}, pages 1094--1099, 1993.
+
+\bibitem{KappenML2012}
+Hilbert~J Kappen, Vicen\c{c} G\'omez, and Manfred Opper.
+\newblock Optimal control as a graphical model inference problem.
+\newblock {\em Mach. Learn.}, 87(2):159--182, 2012.
+
+\bibitem{saxe2017hierarchy}
+Andrew~M Saxe, Adam~C Earle, and Benjamin Rosman.
+\newblock {Hierarchy through composition with multitask LMDPs}.
+\newblock In {\em International Conference on Machine Learning}, pages
+  3017--3026. PMLR, 2017.
+
+\bibitem{TodorovNIPS2007}
+Emanuel Todorov.
+\newblock Linearly-solvable {M}arkov decision problems.
+\newblock {\em Advances in Neural Information Processing Systems (NIPS)}, pages
+  1369--1376, 2006.
+
+\bibitem{TodorovNIPS2009}
+Emanuel Todorov.
+\newblock Compositionality of optimal control laws.
+\newblock {\em Advances in Neural Information Processing Systems (NIPS)}, pages
+  1856--1864, 2009.
+
+\bibitem{conf/nips/Wen20}
+Zheng Wen, Doina Precup, Morteza Ibrahimi, Andre Barreto, Benjamin Van~Roy, and
+  Satinder Singh.
+\newblock {On Efficiency in Hierarchical Reinforcement Learning}.
+\newblock In {\em Proceedings of the 34th Conference on Neural Information
+  Processing Systems (NeurIPS)}, 2020.
+
+\end{thebibliography}

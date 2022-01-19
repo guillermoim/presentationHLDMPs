@@ -104,10 +104,12 @@
 \begin{frame}{Introduction}
 
 \begin{itemize}
-    \item Hierarchical reinforcement learning (HRL) aims to make learning more efficient by exploiting decomposition in a problem~\cite{conf/nips/Wen20}.
-    \item LMDPs are a computationally efficient way to model sequential decision problems~\citep{TodorovNIPS2007}.
+    \item Novel approach to Hierarchical Reinforcement Learning (HRL) assuming partitioned state spaces 
+    and using subtask compositionality with Linearly-solvable Markov Decision Processes (LMDPs).
+    \item HRL aims to make learning more efficient by exploiting decomposition in a problem~\cite{conf/nips/Wen20}.
+    %\item LMDPs are a computationally efficient way to model sequential decision problems~\citep{TodorovNIPS2007}.
     %\item Computing optimal policies for LMDPs is equivalent to a probabilistic inference task~\cite{KappenML2012}.
-    \item LMDPs are strongly related to entropy-regularized RL~\cite{optionkeyb} and have been already used in hierarchical settings \cite{saxe2017hierarchy, conf/icaps/Jonsson16}.
+    %\item LMDPs are strongly related to entropy-regularized RL~\cite{optionkeyb} and have been already used in hierarchical settings \cite{saxe2017hierarchy, conf/icaps/Jonsson16}.
     \item Our method presented here retrieves the globally optimal value function efficiently in a hierarchical setting using LMDPs, in contrast to \textit{hierarchically optimal} and \textit{recursively optimal} approaches \cite{dietterich2000hierarchical}.
 \end{itemize}
     
@@ -123,16 +125,13 @@
         \item  $\cS$ is a discrete set of non-terminal states.
         \item $\cT$ is a set of terminal states.
         \item We use $\cS^+=\cS\cup\cT$ to denote the full set of states.
-        \item $\cP:\cS\rightarrow\cS^+$ is an uncontrolled transition function.
+        \item $\cP:\cS\rightarrow\Delta(\cS^+)$ is an uncontrolled transition function.
         \item $\cR:\cS\rightarrow\real$ is a reward function for non-terminal states, assumed to be non-negative.
         \item $\cJ:\cT\rightarrow\real$ is a reward function for terminal states, assumed to be non-negative.
 
     \end{itemize}
     
-
-  
-
-    The \textbf{learning agent} follows a policy $\pi:\cS\rightarrow\cS^+$, which is a conditional distribution over next states $\pi(\cdot | s_t)$.
+    The \textbf{learning agent} follows a policy $\pi:\cS\rightarrow\Delta(\cS^+)$, which is a conditional distribution over next states $\pi(\cdot | s_t)$.
 \end{frame}
 
 
@@ -140,7 +139,7 @@
     
     \begin{itemize}
 
-        \item At time-step $t$ agent receives reward \[ \cR(s_t,\pi) = \cR(s_t) - \lambda\cdot\mathrm{KL}(\pi(\cdot|s_t)\Vert\, \cP(\cdot|s_t)). \]
+        \item At time-step $t$, the agent observes $s_t$ and receives a reward \[ \cR(s_t,\pi) = \cR(s_t) - \lambda\cdot\mathrm{KL}(\pi(\cdot|s_t)\Vert\, \cP(\cdot|s_t)). \]
 
         \item The aim of the agent is to maximize \[ v^\pi(s) = \EEc{\sum_{t=1}^{T-1} \cR(S_t,\pi) + \cJ(S_T)}{S_1 = s}.\]
         
@@ -171,7 +170,7 @@
          \[ \hat{z}(s_t) \leftarrow (1-\alpha_t) \hat{z}(s_t) + \alpha_t e^{r_t/\lambda}\hat{z}(s_{t+1}) {\color{blue} \frac {\cP(s_{t+1}|s_t)} {\hat{\pi}(s_{t+1}|s_t)}}. \]
          
 \item Once $z$ is computed, policies are derived using \[ \pi(s'|s) = \frac {\cP(s'|s)z(s')} {\sum_{s''} \cP(s''|s)z(s'')}\]
-    which ...
+    which is equivalent to a probabilistic inference task~\cite{KappenML2012}.
 \end{itemize}
 \end{frame}
 
@@ -180,7 +179,7 @@
     \begin{itemize}
     \item Let $\{\cL_1,\ldots,\cL_n\}$ be a collection of LMDPs. 
    
-    \item Each LMDP $\cL_i$ only differ in the reward structure of each terminal state $\tS\in\cT$ (i.e. $\cJ_i(\tS)$).
+    \item Each LMDP $\cL_i$ only differs in the reward structure of each terminal state $\tS\in\cT$ (i.e. $\cJ_i(\tS)$).
     
     \item Let us consider a new LMDP $\cL$ whose (exponential) reward structure at terminal states can be expressed as follows~\cite{TodorovNIPS2009} 
     \begin{equation*}
@@ -201,7 +200,7 @@
 \begin{frame}{Hierarchical LMDPs (i)}
 
     \begin{itemize}
-        \item Hierarchical decomposition nspired by the work of Wen et al.~\cite{conf/nips/Wen20}. 
+        \item Hierarchical decomposition inspired by the work of Wen et al.~\cite{conf/nips/Wen20}. 
         \item Given an LMDP $\cL$, its state space $\cS$ is partitioned into $L$ subsets $\{\cS_i\}_{i=1}^L$. 
         \item Each such subset $\cS_i$ induces a subtask, represented by an LMDP $\cL_i=\langle\cS_i,\cT_i,\cP_i,\cR_i,\cJ_i\rangle$:
         \begin{enumerate}
@@ -451,7 +450,7 @@ Two subtasks $\cL_i$ and $\cL_j$ are equivalent if there exists a bijection $f:\
     
 
 \begin{lemma}[3]
-    For each subtask $\cL_i$ and state $s\in\cS_i^+$, it holds that $z_i^1(s)+\cdots+z_i^n(s)\leq 1$.
+    For each subtask $\cL_i$ and state $s\in\cS_i^+$, it holds that \[ z_i^1(s)+\cdots+z_i^n(s)\leq 1 \]
 \end{lemma}
 
 \end{frame}
@@ -482,21 +481,21 @@ Extending on previously stated lemmas:
 
 \begin{itemize}
     
-    \item In the case of the online algorithm, we keep an estimate of the base value functions $\hat{z}_j^1,\ldots,\hat{z}_j^n$ for each $\cL_j$.
+    \item We keep an estimate of the base value functions $\hat{z}_j^1,\ldots,\hat{z}_j^n$ for each $\cL_j$.
     \item A single transition is enough to update the value functions of all base LMDPs associated with  $\cL_j$ by using intra-task learning \cite{Kaelbling93}.
     \item The update rule for the states in the exit set becomes
     \[
         \hat{z}_\cE(s) \leftarrow (1 - \alpha_\ell) \hat{z}_\cE(s) + \alpha_\ell [\hat{z}_\cE(t_1) {\color{blue}\hat{z}_j^1(s)} + \cdots + \hat{z}_\cE(t_n) {\color{blue} \hat{z}_j^n(s)}].
     \]
     \item Estimates at any level are learned in an episodic fashion.
-    \item When to update states in $\cE$ is still a question to answer. We propose the following alternatives (next slide).
+    \item When to update states in $\cE$ is still a question to answer (next slide).
 \end{itemize}
     
 \end{frame}
 
 
 \begin{frame}{Online algorithm (ii)}
-
+We propose the following alternatives:
 \begin{itemize}
 \item[$V_1$:] Update the value of an exit state $s\in\cE_i$ each time we take a transition from $s$.
 \item[$V_2$:] When we reach a terminal state of the subtask $\cL_i$, update the values of all exit states in $\cE_i$.
@@ -586,8 +585,11 @@ Extending on previously stated lemmas:
 
 \begin{frame}{Conclusion}
 
-Unlike typical HRL approaches, we no longer need a high-level policy that selects among subgoals (e.g. non-stationarity in SMDPs). Instead, we are able to retrieve the optimal value function for each state thanks to the decomposition of the value function in terms of the values of base LMDPs.
-    
+    \begin{itemize}
+        \item Unlike typical HRL approaches, we no longer need a high-level policy that selects among subgoals (e.g. non-stationarity in SMDPs). 
+        \item Instead, we are able to retrieve the optimal value function for each state thanks to the decomposition of the value function in terms of the values of base LMDPs.
+    \end{itemize}
+
 \end{frame}
 
 
@@ -597,4 +599,3 @@ Unlike typical HRL approaches, we no longer need a high-level policy that select
 \end{frame}
 
 \end{document}
-References

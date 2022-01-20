@@ -83,9 +83,8 @@
 }
 
 \title[Globally Optimal HRL for LMDPs]{Globally Optimal Hierarchical Reinforcement Learning for Linearly-Solvable Markov Decision Processes}
-%\subtitle{(Submitted to NeurIPS 2021)}
-\author[G. Infante, A. Jonsson, V. Gómez ]{Guillermo Infante, Anders Jonsson, Vicenç Gómez }
-\date[July 2021]{July 2021}
+\author[G. Infante, A. Jonsson, V. Gómez ]{Guillermo Infante, Anders Jonsson, Vicenç Gómez}
+\date[]{\textit{AAAI 2022}}
 
 
 
@@ -104,17 +103,15 @@
 \begin{frame}{Introduction}
 
 \begin{itemize}
-    \item Novel approach to Hierarchical Reinforcement Learning (HRL) assuming partitioned state spaces 
-    and using subtask compositionality with Linearly-solvable Markov Decision Processes (LMDPs).
-    \item HRL aims to make learning more efficient by exploiting decomposition in a problem~\cite{conf/nips/Wen20}.
-    %\item LMDPs are a computationally efficient way to model sequential decision problems~\citep{TodorovNIPS2007}.
-    %\item Computing optimal policies for LMDPs is equivalent to a probabilistic inference task~\cite{KappenML2012}.
-    %\item LMDPs are strongly related to entropy-regularized RL~\cite{optionkeyb} and have been already used in hierarchical settings \cite{saxe2017hierarchy, conf/icaps/Jonsson16}.
-    \item Our method presented here retrieves the globally optimal value function efficiently in a hierarchical setting using LMDPs, in contrast to \textit{hierarchically optimal} and \textit{recursively optimal} approaches \cite{dietterich2000hierarchical}.
+    \item Hierachical Reinforcement Learning aims to make {\color{blue} learning more efficient} by exploiting of large problems~\citep{conf/nips/Wen20}.
+    \item Novel approach to HRL using Linearly-solvable Markov Decision Processes (LMDPs) by {\color{blue} combining the value function for subtasks} induced by partitions on the state space.
+    \item LMDPs are a computationally efficient way to model sequential decision problems~\citep{TodorovNIPS2007}.
+    %\item Computing optimal policies for LMDPs is equivalent to a probabilistic inference task~\citep{KappenML2012}.
+    %\item LMDPs are strongly related to entropy-regularized RL~\citep{optionkeyb} and have been already used in hierarchical settings \citep{saxe2017hierarchy, conf/icaps/Jonsson16}.
+    \item Our method presented here retrieves {\color{blue}the globally optimal value function}~\citep{dietterich2000hierarchical}. 
 \end{itemize}
     
 \end{frame}
-
 
 \section{Background}
 \begin{frame}{Background - LMDPs (i)}
@@ -131,7 +128,7 @@
 
     \end{itemize}
     
-    The \textbf{learning agent} follows a policy $\pi:\cS\rightarrow\Delta(\cS^+)$, which is a conditional distribution over next states $\pi(\cdot | s_t)$.
+    The {\color{blue} learning agent} follows a policy $\pi:\cS\rightarrow\Delta(\cS^+)$, which is a conditional probability distribution over next states $\pi(\cdot | s_t)$.
 \end{frame}
 
 
@@ -152,36 +149,34 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Background - LMDPs (iii)}
+\begin{frame}{Background - LMDPs (iii) - Eigenvector setting}
     
     \begin{itemize}
-         \item Taking the exponential transformation $z(s)=e^{v(s)/\lambda}$ for each $s\in\cS^+$ leads to Bellman equations that are linear in $z$ \[ z(s) = e^{\cR(s)/\lambda} \sum_{s'}\cP(s'|s)z(s'). \]
+         \item Taking the exponential transformation $z(s)=e^{v(s)/\lambda}$ for each $s\in\cS^+$ leads to {\color{blue} Bellman equations that are linear in $z$} \[ z(s) = e^{\cR(s)/\lambda} \sum_{s'}\cP(s'|s)z(s'). \]
          \item If $\cP$ and $\cR$ are known, this problem can be formulated as an eigenvector problem \[ \mathbf{z} = R P \mathbf{z^+} \text{  where  } R=\text{diag}(e^{\cR(\cdot)/\lambda}) \] where initially 
          $\mathbf z  = \bf 1$.
         \end{itemize}
 \end{frame}
 
-\begin{frame}{Background - LMDPs (iii) - online setting}
+\begin{frame}{Background - LMDPs (iii) - Online setting}
 
 \begin{itemize}
-\item The previous approach requires using the full transition matrix what makes it {\color{blue} intractable} when the state space is large.
 \item Alternatively, there exists an online {\color{blue} (corrected)} update rule  
         
          \[ \hat{z}(s_t) \leftarrow (1-\alpha_t) \hat{z}(s_t) + \alpha_t e^{r_t/\lambda}\hat{z}(s_{t+1}) {\color{blue} \frac {\cP(s_{t+1}|s_t)} {\hat{\pi}(s_{t+1}|s_t)}}. \]
          
-\item Once $z$ is computed, policies are derived using \[ \pi(s'|s) = \frac {\cP(s'|s)z(s')} {\sum_{s''} \cP(s''|s)z(s'')}\]
-    which is equivalent to a probabilistic inference task~\cite{KappenML2012}.
+\item Given a $z$, policies are derived using \[ \pi(s'|s) = \frac {\cP(s'|s)z(s')} {\sum_{s''} \cP(s''|s)z(s'')}.\]
+\item This process is equivalent to a probabilistic inference task~\citep{KappenML2012}.
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}{Background - Compositionality}
+\begin{frame}{Background - LMDPs (iv) - Compositionality}
     \begin{itemize}
     \item Let $\{\cL_1,\ldots,\cL_n\}$ be a collection of LMDPs. 
    
-    \item Each LMDP $\cL_i$ only differs in the reward structure of each terminal state $\tS\in\cT$ (i.e. $\cJ_i(\tS)$).
+    \item Each LMDP $\cL_i$ {\color{blue} only differs in} the reward structure of each terminal state $\tS\in\cT$ (i.e. {\color{blue} $\cJ_i(\tS)$}).
     
-    \item Let us consider a new LMDP $\cL$ whose (exponential) reward structure at terminal states can be expressed as follows~\cite{TodorovNIPS2009} 
+    \item Let us consider a new LMDP $\cL$ whose {\color{blue} (exponential) reward structure at terminal states} can be expressed as follows~\citep{TodorovNIPS2009} 
     \begin{equation*}
         e^{\cJ(\tS)/\lambda} = z(\tS) = \sum_{k=1}^n w_k e^{\cJ_k(\tS)/\lambda}.
     \end{equation*}
@@ -200,8 +195,8 @@
 \begin{frame}{Hierarchical LMDPs (i)}
 
     \begin{itemize}
-        \item Hierarchical decomposition inspired by the work of Wen et al.~\cite{conf/nips/Wen20}. 
-        \item Given an LMDP $\cL$, its state space $\cS$ is partitioned into $L$ subsets $\{\cS_i\}_{i=1}^L$. 
+        \item Hierarchical decomposition inspired by the work of Wen et al.~\citep{conf/nips/Wen20}. 
+        \item Given an LMDP $\cL$, its {\color{blue}state space $\cS$ is partitioned} into $L$ subsets $\{\cS_i\}_{i=1}^L$. 
         \item Each such subset $\cS_i$ induces a subtask, represented by an LMDP $\cL_i=\langle\cS_i,\cT_i,\cP_i,\cR_i,\cJ_i\rangle$:
         \begin{enumerate}
         \item The set of non-terminal states is $\cS_i$.
@@ -223,19 +218,19 @@ Two subtasks $\cL_i$ and $\cL_j$ are equivalent if there exists a bijection $f:\
 \begin{itemize}
     
      
-    \item We define a set of {\em exit states} $\cE=\cup_{i=1}^L\cT_i$
+    \item We define a {\color{blue}set of  {\em exit states}} $\cE=\cup_{i=1}^L\cT_i$
     \item We also use $\cE_i=\cE\cap\cS_i$ to denote the set of (non-terminal) exit states in the subtask $\cL_i$. 
     
-    \item  A set of equivalence classes $\cC=\{\cC_1,\ldots,\cC_C\}$, $C\leq L$, i.e.~a partition of the set of subtasks $\{\cL_1,\ldots,\cL_L\}$ such that all subtasks in a given partition are equivalent.
+    \item  A set of {\color{blue} equivalence classes} $\cC=\{\cC_1,\ldots,\cC_C\}$, $C\leq L$, i.e.~a partition of the set of subtasks $\{\cL_1,\ldots,\cL_L\}$ such that all subtasks in a given partition are equivalent.
     
-    \item We represent a single subtask $\cL_j=\langle\cS_j,\cT_j,\cP_j,\cR_j,\cJ_j\rangle$ per equivalence class $\cC_j\in\cC$. 
+    \item We represent {\color{blue} a single subtask} $\cL_j=\langle\cS_j,\cT_j,\cP_j,\cR_j,\cJ_j\rangle$ {\color{blue} per equivalence class} $\cC_j\in\cC$. 
     
 \end{itemize}
 
     
 \end{frame}
 
-\begin{frame}{Example}
+\begin{frame}{Hierarchical LMDPs (iii) - Illustration}
 
 \begin{figure}
 \begin{center}
@@ -270,14 +265,14 @@ Two subtasks $\cL_i$ and $\cL_j$ are equivalent if there exists a bijection $f:\
 \draw[ultra thick] (2.6,1.8) rectangle (3.4,2.2);
 
 \node at (4.4,4.4) {\small $G$};
-\node at (2,3.2) {\small $1^B$};
-\node at (2,2.8) {\small $2^T$};
-\node at (4,3.2) {\small $3^B$};
-\node at (4,2.8) {\small $4^T$};
-\node at (2.8,4) {\small $1^R$};
-\node at (2.8,2) {\small $2^R$};
-\node at (3.2,4) {\small $3^L$};
-\node at (3.2,2) {\small $4^L$};
+\node at (2,3.2) {\small $2^T$};
+\node at (2,2.8) {\small $1^B$};
+\node at (4,3.2) {\small $4^T$};
+\node at (4,2.8) {\small $3^B$};
+\node at (2.8,4) {\small $3^L$};
+\node at (2.8,2) {\small $4^L$};
+\node at (3.2,4) {\small $1^R$};
+\node at (3.2,2) {\small $2^R$};
 
 \draw[step=0.4,thin,shift={(0.2,0)}] (8.799,1.999) grid (10.8,4);
 \draw[ultra thick] (9,3.2) -- (8.6,3.2) -- (8.6,2.8) -- (9,2.8) -- (9,2) -- (9.8,2);
@@ -301,18 +296,16 @@ Two subtasks $\cL_i$ and $\cL_j$ are equivalent if there exists a bijection $f:\
 
 \end{frame}
 
-\section{Subtask compositionality}
-
-\begin{frame}{Subtask compositionality (i)}
+\begin{frame}{Hierarchical LMDPs (iv) - Subtask compositionality (i)}
 
 \begin{itemize}
     \item For a subtask $\cL_j=\langle\cS_j,\cT_j,\cP_j,\cR_j,\cJ_j\rangle$ as defined previously, consider its terminal set~$\cT_j=\{\tau_1,\ldots,\tau_n\}$.
     \item We define {\color{blue} $n$ base LMDPs} $\cL_j^1,\ldots,\cL_j^n$, where each base LMDP  $\cL_j^k$ only differ in the reward of terminal states $\cJ_j^k$.
     \item Concretely, $z_j^k(\tau)=1$ if $\tau=\tau_k$, and $z_j^k(\tau)=0$ otherwise. This corresponds to an actual reward of $\cJ_j^k(\tau)=0$ for $\tau=\tau_k$, and $\cJ_j^k(\tau)=-\infty$ otherwise.
     \item Thus, we can solve these {\color{blue} base LMDPs} to obtain $z_j^1,\ldots,z_j^n$.
-    \item Having an estimate $\hat z(s)$ for each $t \in \cT_j$, then by compositionality
-    \begin{equation*}\label{eq:comp}
-        \hat{z}(\tau)=\hat{z}(\tau_1)z_j^1(\tau)+\cdots+\hat{z}(\tau_n)z_j^n(\tau)
+    \item Having an estimate $\hat z(s)$ for each $t \in \cT_j$, then thanks to compositionality, the estimated value of each non-terminal state $s\in\cS_i$ is
+    \begin{equation*}
+        \hat{z}(s)=\hat{z}(\tau_1)z_j^1(s)+\cdots+\hat{z}(\tau_n)z_j^n(s) \;\; \forall s\in\cS_i,\forall\cL_i\in\cC_j.
     \end{equation*}
 \end{itemize}
 
@@ -320,18 +313,15 @@ Two subtasks $\cL_i$ and $\cL_j$ are equivalent if there exists a bijection $f:\
 \end{frame}
 
 
-\begin{frame}{Subtask compositionality (ii)}
+\begin{frame}{Hierarchical LMDPs (v) - Subtask compositionality (ii)}
 
 
 \begin{itemize}
-    \item Thanks to compositionality, the estimated value of each non-terminal state $s\in\cS_i$ is
-    \begin{equation*}
-        \hat{z}(s)=\hat{z}(\tau_1)z_j^1(s)+\cdots+\hat{z}(\tau_n)z_j^n(s) \;\; \forall s\in\cS_i,\forall\cL_i\in\cC_j.
-    \end{equation*}
+
     
-    \item Terminal states $\tau_1 \dots \tau_n$ are by definition in $\cE$.
+   \item For all subtaks, terminal states $\tau_1 \dots \tau_n$ are by definition in $\cE$.
     
-   \item Having access to a value estimate $\hat{z}_\cE:\cE\rightarrow\mathbb{R}$ and the base LMDPs value functions $z_j^1,\ldots,z_j^n$, is enough to express the value estimate of each other state without learning.
+   \item Having access to a value estimate $\hat{z}_\cE:\cE\rightarrow\mathbb{R}$ and the base LMDPs value functions $z_j^1,\ldots,z_j^n$ is enough to express the value estimate of every other state without learning.
    
    \item No need to store an explicit estimate $\hat z(s)$.
    
@@ -342,11 +332,11 @@ Two subtasks $\cL_i$ and $\cL_j$ are equivalent if there exists a bijection $f:\
 \end{frame}
 
 
-\begin{frame}{Subtask compositionality (iii)}
+\begin{frame}{Hierarchical LMDPs (vi) - Subtask compositionality (iii)}
 
 \begin{remark}[]
     
-    If $\hat z(s)$ is optimal for $s \in \cE$, then $\hat z(s)$ for $s \in \cS_i$ will also be optimal. Thanks to compositionality we have \[\hat z(s) = \hat z(1^R) * z_L(s) + \hat z(4^T) * z_B(s) + \hat z(G) * z_G(s)\]
+    If $\hat z(s)$ is optimal for $s \in \cE$, then $\hat z(s)$ for $s \in \cS_i$ will also be optimal. Thanks to compositionality we have \[\hat z(s) = \hat z(3^L) * z_L(s) + \hat z(3^B) * z_B(s) + \hat z(G) * z_G(s)\]
     
     For any state $s$ in $\cS_i$ represented in red. Thus, if $\hat z = z^*$ for terminal states, then it will be optimal for the interior states as well.
     
@@ -376,8 +366,12 @@ Two subtasks $\cL_i$ and $\cL_j$ are equivalent if there exists a bijection $f:\
 \draw[fill] (1.8,0.6) rectangle (2.2,1);
 \draw[fill] (3.8,0.6) rectangle (4.2,1);
 \draw[fill] (5,1.8) rectangle (5.4,2.2);
-\draw[fill, color=red] (5,3.8) rectangle (5.4,4.2);
-\draw[fill, color=red] (3.8,5) rectangle (4.2,5.4);
+\draw[fill] (5,3.8) rectangle (5.4,4.2);
+\draw[fill] (3.8,5) rectangle (4.2,5.4);
+
+\draw[fill] (2.2,2.2) rectangle (2.6,2.6);
+\draw[fill] (4.2,2.2) rectangle (4.6,2.6);
+\draw[fill] (2.2,4.2) rectangle (2.6,4.6);
 
 \draw[ultra thick, color=red] (4.2,4.2) rectangle (4.6,4.6);
 \draw[ultra thick, color=red] (3.8,2.6) rectangle (4.2,3.4);
@@ -386,14 +380,14 @@ Two subtasks $\cL_i$ and $\cL_j$ are equivalent if there exists a bijection $f:\
 \draw[ultra thick] (2.6,1.8) rectangle (3.4,2.2);
 
 \node at (4.4,4.4) {\small $G$};
-\node at (2,3.2) {\small $1^B$};
-\node at (2,2.8) {\small $2^T$};
-\node at (4,3.2) {\small $3^B$};
-\node at (4,2.8) {\small $4^T$};
-\node at (2.8,4) {\small $1^R$};
-\node at (2.8,2) {\small $2^R$};
-\node at (3.2,4) {\small $3^L$};
-\node at (3.2,2) {\small $4^L$};
+\node at (2,3.2) {\small $2^T$};
+\node at (2,2.8) {\small $1^B$};
+\node at (4,3.2) {\small $4^T$};
+\node at (4,2.8) {\small $3^B$};
+\node at (2.8,4) {\small $3^L$};
+\node at (2.8,2) {\small $4^L$};
+\node at (3.2,4) {\small $1^R$};
+\node at (3.2,2) {\small $2^R$};
 
 \draw[step=0.4,thin,shift={(0.2,0)}] (8.799,1.999) grid (10.8,4);
 \draw[ultra thick] (9,3.2) -- (8.6,3.2) -- (8.6,2.8) -- (9,2.8) -- (9,2) -- (9.8,2);
@@ -419,7 +413,6 @@ Two subtasks $\cL_i$ and $\cL_j$ are equivalent if there exists a bijection $f:\
 
 \begin{frame}{Eigenvector algorithm (i)}
 \begin{itemize}
-    \item In the case of known dynamics, we can directly solve $\cL_j$ for each equivalence class $\cC_j$.
     \item We can reformulate the system of equations yielded by
     \begin{equation*}
         \hat{z}(s)=\hat{z}(\tau_1) {\color{blue} z_j^1(s)}+\cdots+\hat{z}(\tau_n){\color{blue}z_j^n(s)} \;\; \forall s\in\cS_i,\forall\cL_i\in\cC_j.
@@ -455,34 +448,34 @@ Two subtasks $\cL_i$ and $\cL_j$ are equivalent if there exists a bijection $f:\
 
 \end{frame}
 
-\begin{frame}{Eigenvector algorithm (iii) - Convergence proof}
-Extending on previously stated lemmas:
-\begin{itemize}
-    \item The base case happens at terminal states $t_\ell\in\cT_i$. In such case $z_i^1(t_\ell)+\cdots+z_i^n(t_\ell) = z_i^\ell(t_\ell) = 1$.
-    \item The Bellman equation for the base LMDPs is \[
-    z_i^1(s)+\cdots+z_i^n(s)=
-    {\color{orange} e^{\cR_i(s)/\lambda}}
-    \sum_{s'}{\color{red} P(s'|s)}\left[z_i^1(s')+\cdots+z_i^n(s')\right].
-    \]
-
-\item ${\color{orange} e^{\cR_i(s)/\lambda} < 1}$ since $\cR_i(s) < 0$ holds.
-
-\item And since $\left[z_i^1(s')+\cdots+z_i^n(s')\right] \leq 1$ also holds, by induction $z_i^1(s)+\cdots+z_i^n(s) \leq 1$.
-
-\item Thus, in the equation\[ z_\cE = G z_\cE \]G has spectral radius at most 1. The power iteration method will find the eigenvector for the the largest eigenvalue 1.
-
-
-
-\end{itemize}
-    
-\end{frame}
+%\begin{frame}{Eigenvector algorithm (iii) - Convergence proof}
+%Extending on previously stated lemmas:
+%%\begin{itemize}
+%    %\item The base case happens at terminal states $t_\ell\in\cT_i$. In such case $z_i^1(t_\ell)+\cdots+z_i^n(t_\ell) = z_i^\ell(t_\ell) = 1$.
+%    %\item The Bellman equation for the base LMDPs is \[
+%    %z_i^1(s)+\cdots+z_i^n(s)=
+%    %{\color{orange} e^{\cR_i(s)/\lambda}}
+%    %\sum_{s'}{\color{red} P(s'|s)}\left[z_i^1(s')+\cdots+z_i^n(s')\right].
+%    %\]
+%
+%\item ${\color{orange} e^{\cR_i(s)/\lambda} < 1}$ since $\cR_i(s) < 0$ holds.
+%
+%\item And since $\left[z_i^1(s')+\cdots+z_i^n(s')\right] \leq 1$ also holds, by induction $z_i^1(s)+\cdots+z_i^n(s) \leq 1$.
+%
+%\item Thus, in the equation\[ z_\cE = G z_\cE \]G has spectral radius at most 1. The power iteration method will find the eigenvector for the the largest eigenvalue 1.
+%
+%
+%
+%\end{itemize}
+%    
+%\end{frame}
 
 \begin{frame}{Online algorithm (i)}
 
 \begin{itemize}
     
     \item We keep an estimate of the base value functions $\hat{z}_j^1,\ldots,\hat{z}_j^n$ for each $\cL_j$.
-    \item A single transition is enough to update the value functions of all base LMDPs associated with  $\cL_j$ by using intra-task learning \cite{Kaelbling93}.
+    \item A single transition is enough to update the value functions of all base LMDPs associated with  $\cL_j$ by using intra-task learning \citep{Kaelbling93}.
     \item The update rule for the states in the exit set becomes
     \[
         \hat{z}_\cE(s) \leftarrow (1 - \alpha_\ell) \hat{z}_\cE(s) + \alpha_\ell [\hat{z}_\cE(t_1) {\color{blue}\hat{z}_j^1(s)} + \cdots + \hat{z}_\cE(t_n) {\color{blue} \hat{z}_j^n(s)}].
@@ -508,7 +501,7 @@ We propose the following alternatives:
 
 
 
-\section{Experiments}
+\section{Experiments and results}
 \begin{frame}{Experiments - Rooms domain}
 
 
@@ -524,6 +517,20 @@ We propose the following alternatives:
 \end{figure}
     
 \end{frame}
+
+\begin{frame}{Results - Rooms domain}
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{Figures/nroom_3_3-1.png}
+    \includegraphics[scale=0.2]{Figures/nroom_5_5-1.png}
+    \includegraphics[scale=0.2]{Figures/nroom_8_8-1.png}
+    
+    \caption{MAE over time for $3 \times 3$ (left), $5 \times 5$ (middle) and $8 \times 8$ (right) room instances.}
+    \label{fig:errors_grid}
+    \end{figure}
+    
+    \end{frame}
 
 
 \begin{frame}{Experiments - Taxi domain}
@@ -544,21 +551,6 @@ We propose the following alternatives:
 \end{frame}
 
 
-\section{Results}
-\begin{frame}{Results - Rooms domain}
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.2]{Figures/nroom_3_3-1.png}
-\includegraphics[scale=0.2]{Figures/nroom_5_5-1.png}
-\includegraphics[scale=0.2]{Figures/nroom_8_8-1.png}
-
-\caption{MAE over time for $3 \times 3$ (left), $5 \times 5$ (middle) and $8 \times 8$ (right) room instances.}
-\label{fig:errors_grid}
-\end{figure}
-
-\end{frame}
-
 \begin{frame}{Results - Taxi domain}
 
 \begin{figure}[H]
@@ -575,9 +567,11 @@ We propose the following alternatives:
 \begin{frame}{Contributions}
 \begin{itemize}
     \item We define a novel scheme based on compositionality for solving subtasks. 
-    \item The subtasks decomposition is at the level of the value function, thus our approach does not suffer from non-stationarity in the online setting. 
+    \item The subtasks decomposition is at the level of the value function, thus our approach does not suffer
+    from non-stationarity in the online setting. 
     \item Under mild assumptions, our method converges to the optimal value function.
-    \item {\color{myred} In the options setting...}
+    \item {\color{myred} Unlike the options setting, we can retrieve the optimal value function for the full state space 
+    using the value estimates for the exit states.}
 
 \end{itemize}
 
@@ -594,7 +588,7 @@ We propose the following alternatives:
 
 
 \begin{frame}[allowframebreaks]{}
-    \bibliographystyle{plain}
+    \bibliographystyle{apalike}
     \bibliography{references}
 \end{frame}
 

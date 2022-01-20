@@ -1,59 +1,39 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{}
 
-\bibitem{optionkeyb}
-Andre Barreto, Diana Borsa, Shaobo Hou, Gheorghe Comanici, Eser Ayg\"{u}n,
-  Philippe Hamel, Daniel Toyama, Jonathan Hunt, Shibl Mourad, David Silver, and
-  Doina Precup.
-\newblock {The Option Keyboard: Combining Skills in Reinforcement Learning}.
-\newblock In {\em Advances in Neural Information Processing Systems 32}, pages
-  13031--13041, 2019.
-
-\bibitem{dietterich2000hierarchical}
-Thomas~G. Dietterich.
+\bibitem[Dietterich, 2000]{dietterich2000hierarchical}
+Dietterich, T.~G. (2000).
 \newblock Hierarchical reinforcement learning with the {MAXQ} value function
   decomposition.
-\newblock {\em J. Artif. Intell. Res.}, 13:227--303, 2000.
+\newblock {\em J. Artif. Intell. Res.}, 13:227--303.
 
-\bibitem{conf/icaps/Jonsson16}
-Anders Jonsson and Vicen\c{c} G{\'o}mez.
-\newblock {Hierarchical Linearly-Solvable Markov Decision Problems}.
-\newblock In {\em Proceedings of the 26th International Conference on Automated
-  Planning and Scheduling (ICAPS)}, 2016.
-
-\bibitem{Kaelbling93}
-Leslie~Pack Kaelbling.
+\bibitem[Kaelbling, 1993]{Kaelbling93}
+Kaelbling, L.~P. (1993).
 \newblock {Learning to Achieve Goals}.
 \newblock In {\em Proceedings of the International Joint Conference on
-  Artificial Intelligence (IJCAI)}, pages 1094--1099, 1993.
+  Artificial Intelligence (IJCAI)}, pages 1094--1099.
 
-\bibitem{KappenML2012}
-Hilbert~J Kappen, Vicen\c{c} G\'omez, and Manfred Opper.
+\bibitem[Kappen et~al., 2012]{KappenML2012}
+Kappen, H.~J., G\'omez, V., and Opper, M. (2012).
 \newblock Optimal control as a graphical model inference problem.
-\newblock {\em Mach. Learn.}, 87(2):159--182, 2012.
+\newblock {\em Mach. Learn.}, 87(2):159--182.
 
-\bibitem{saxe2017hierarchy}
-Andrew~M Saxe, Adam~C Earle, and Benjamin Rosman.
-\newblock {Hierarchy through composition with multitask LMDPs}.
-\newblock In {\em International Conference on Machine Learning}, pages
-  3017--3026. PMLR, 2017.
-
-\bibitem{TodorovNIPS2007}
-Emanuel Todorov.
+\bibitem[Todorov, 2006]{TodorovNIPS2007}
+Todorov, E. (2006).
 \newblock Linearly-solvable {M}arkov decision problems.
 \newblock {\em Advances in Neural Information Processing Systems (NIPS)}, pages
-  1369--1376, 2006.
+  1369--1376.
 
-\bibitem{TodorovNIPS2009}
-Emanuel Todorov.
+\bibitem[Todorov, 2009]{TodorovNIPS2009}
+Todorov, E. (2009).
 \newblock Compositionality of optimal control laws.
 \newblock {\em Advances in Neural Information Processing Systems (NIPS)}, pages
-  1856--1864, 2009.
+  1856--1864.
 
-\bibitem{conf/nips/Wen20}
-Zheng Wen, Doina Precup, Morteza Ibrahimi, Andre Barreto, Benjamin Van~Roy, and
-  Satinder Singh.
+\bibitem[Wen et~al., 2020]{conf/nips/Wen20}
+Wen, Z., Precup, D., Ibrahimi, M., Barreto, A., Van~Roy, B., and Singh, S.
+  (2020).
 \newblock {On Efficiency in Hierarchical Reinforcement Learning}.
 \newblock In {\em Proceedings of the 34th Conference on Neural Information
-  Processing Systems (NeurIPS)}, 2020.
+  Processing Systems (NeurIPS)}.
 
 \end{thebibliography}

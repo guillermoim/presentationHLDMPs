@@ -6,6 +6,12 @@ Dietterich, T.~G. (2000).
   decomposition.
 \newblock {\em J. Artif. Intell. Res.}, 13:227--303.
 
+\bibitem[Jonsson and G{\'o}mez, 2016]{conf/icaps/Jonsson16}
+Jonsson, A. and G{\'o}mez, V. (2016).
+\newblock {Hierarchical Linearly-Solvable Markov Decision Problems}.
+\newblock In {\em Proceedings of the 26th International Conference on Automated
+  Planning and Scheduling (ICAPS)}.
+
 \bibitem[Kaelbling, 1993]{Kaelbling93}
 Kaelbling, L.~P. (1993).
 \newblock {Learning to Achieve Goals}.

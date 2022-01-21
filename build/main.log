@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.12.27)  20 JAN 2022 18:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.12.27)  20 JAN 2022 22:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -966,12 +966,8 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ] [6
 
 ]
-Overfull \hbox (6.02815pt too wide) detected at line 150
-[]
- []
-
-
-Overfull \vbox (6.71793pt too high) detected at line 150
+Overfull \hbox (1.16158pt too wide) detected at line 147
+[]\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s\OT1/cmr/m/n/10.95 ) = []\OMS/cmsy/m/n/10.95 R\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s\OT1/cmr/m/n/10.95 ) + [] \U/msb/m/n/10.95 E[] []   \OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 8\OML/cmm/m/it/10.95 s\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 :
  []
 
 [7
@@ -980,11 +976,7 @@ Overfull \vbox (6.71793pt too high) detected at line 150
 
 ] [9
 
-]
-Overfull \vbox (17.46521pt too high) detected at line 192
- []
-
-[10
+] [10
 
 ] [11
 
@@ -993,12 +985,12 @@ Overfull \vbox (17.46521pt too high) detected at line 192
 ] [13
 
 ]
-Overfull \hbox (1.99364pt too wide) in paragraph at lines 297--297
+Overfull \hbox (1.99364pt too wide) in paragraph at lines 294--294
  [] 
  []
 
 
-Overfull \vbox (4.94643pt too high) detected at line 297
+Overfull \vbox (4.94643pt too high) detected at line 294
  []
 
 [14
@@ -1008,7 +1000,7 @@ Overfull \vbox (4.94643pt too high) detected at line 297
 ] [16
 
 ]
-Overfull \vbox (18.97632pt too high) detected at line 410
+Overfull \vbox (3.3364pt too high) detected at line 411
  []
 
 [17
@@ -1026,57 +1018,57 @@ Overfull \vbox (18.97632pt too high) detected at line 410
 ] [23
 
 ]
-<Figures/grid_domain_VF.png, id=210, 845.3181pt x 597.432pt>
+<Figures/grid_domain_VF.png, id=212, 845.3181pt x 597.432pt>
 File: Figures/grid_domain_VF.png Graphic file (type png)
 <use Figures/grid_domain_VF.png>
-Package pdftex.def Info: Figures/grid_domain_VF.png  used on input line 519.
+Package pdftex.def Info: Figures/grid_domain_VF.png  used on input line 517.
 (pdftex.def)             Requested size: 211.32901pt x 149.35764pt.
  [24
 
  <./Figures/grid_domain_VF.png>]
-<Figures/nroom_3_3-1.png, id=218, 611.6451pt x 427.5975pt>
+<Figures/nroom_3_3-1.png, id=220, 611.6451pt x 427.5975pt>
 File: Figures/nroom_3_3-1.png Graphic file (type png)
 <use Figures/nroom_3_3-1.png>
-Package pdftex.def Info: Figures/nroom_3_3-1.png  used on input line 533.
+Package pdftex.def Info: Figures/nroom_3_3-1.png  used on input line 531.
 (pdftex.def)             Requested size: 122.32684pt x 85.51797pt.
-<Figures/nroom_5_5-1.png, id=219, 611.6451pt x 427.5975pt>
+<Figures/nroom_5_5-1.png, id=221, 611.6451pt x 427.5975pt>
 File: Figures/nroom_5_5-1.png Graphic file (type png)
 <use Figures/nroom_5_5-1.png>
-Package pdftex.def Info: Figures/nroom_5_5-1.png  used on input line 533.
+Package pdftex.def Info: Figures/nroom_5_5-1.png  used on input line 531.
 (pdftex.def)             Requested size: 122.32684pt x 85.51797pt.
-<Figures/nroom_8_8-1.png, id=220, 611.6451pt x 427.5975pt>
+<Figures/nroom_8_8-1.png, id=222, 611.6451pt x 427.5975pt>
 File: Figures/nroom_8_8-1.png Graphic file (type png)
 <use Figures/nroom_8_8-1.png>
-Package pdftex.def Info: Figures/nroom_8_8-1.png  used on input line 533.
+Package pdftex.def Info: Figures/nroom_8_8-1.png  used on input line 531.
 (pdftex.def)             Requested size: 122.32684pt x 85.51797pt.
 
-Overfull \vbox (6.29004pt too high) detected at line 533
+Overfull \vbox (6.29004pt too high) detected at line 531
  []
 
 [25
 
  <./Figures/nroom_3_3-1.png (PNG copy)> <./Figures/nroom_5_5-1.png (PNG copy)> <./Figures/nroom_8_8-1.png (PNG copy)>]
-<Figures/taxi_dom_VF.png, id=228, 715.473pt x 341.1144pt>
+<Figures/taxi_dom_VF.png, id=230, 715.473pt x 341.1144pt>
 File: Figures/taxi_dom_VF.png Graphic file (type png)
 <use Figures/taxi_dom_VF.png>
-Package pdftex.def Info: Figures/taxi_dom_VF.png  used on input line 551.
+Package pdftex.def Info: Figures/taxi_dom_VF.png  used on input line 549.
 (pdftex.def)             Requested size: 250.4193pt x 119.39182pt.
 
-Overfull \vbox (0.32053pt too high) detected at line 551
+Overfull \vbox (0.32053pt too high) detected at line 549
  []
 
 [26
 
  <./Figures/taxi_dom_VF.png (PNG copy)>]
-<Figures/taxi_5-1.png, id=235, 611.6451pt x 428.0793pt>
+<Figures/taxi_5-1.png, id=237, 611.6451pt x 428.0793pt>
 File: Figures/taxi_5-1.png Graphic file (type png)
 <use Figures/taxi_5-1.png>
-Package pdftex.def Info: Figures/taxi_5-1.png  used on input line 564.
+Package pdftex.def Info: Figures/taxi_5-1.png  used on input line 562.
 (pdftex.def)             Requested size: 134.56233pt x 94.17773pt.
-<Figures/taxi_10-1.png, id=236, 611.6451pt x 428.0793pt>
+<Figures/taxi_10-1.png, id=238, 611.6451pt x 428.0793pt>
 File: Figures/taxi_10-1.png Graphic file (type png)
 <use Figures/taxi_10-1.png>
-Package pdftex.def Info: Figures/taxi_10-1.png  used on input line 564.
+Package pdftex.def Info: Figures/taxi_10-1.png  used on input line 562.
 (pdftex.def)             Requested size: 134.56233pt x 94.17773pt.
  [27
 
@@ -1111,18 +1103,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 068F257ECF39C9448E341DCA155132A0;871.
  ) 
 Here is how much of TeX's memory you used:
- 28793 strings out of 478994
- 578249 string characters out of 5858183
- 865393 words of memory out of 5000000
- 45556 multiletter control sequences out of 15000+600000
- 415645 words of font info for 72 fonts, out of 8000000 for 9000
+ 28799 strings out of 478994
+ 578368 string characters out of 5858183
+ 864414 words of memory out of 5000000
+ 45561 multiletter control sequences out of 15000+600000
+ 416245 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  131i,13n,132p,1860b,833s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/infante/Desktop/latex-projects/presentationHLDMPs/build/main.pdf (32 pages, 2100897 bytes).
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/infante/Desktop/latex-projects/presentationHLDMPs/build/main.pdf (32 pages, 2107000 bytes).
 PDF statistics:
- 345 PDF objects out of 1000 (max. 8388607)
- 275 compressed objects within 3 object streams
- 83 named destinations out of 1000 (max. 500000)
+ 350 PDF objects out of 1000 (max. 8388607)
+ 279 compressed objects within 3 object streams
+ 84 named destinations out of 1000 (max. 500000)
  139 words of extra memory for PDF output out of 10000 (max. 10000000)
 

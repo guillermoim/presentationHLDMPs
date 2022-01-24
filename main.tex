@@ -103,9 +103,9 @@
 \begin{frame}{Introduction}
 
 \begin{itemize}
-    \item Hierachical Reinforcement Learning aims to make {\color{blue} learning more efficient} by exploiting of large problems~\citep{conf/nips/Wen20}.
+    \item Hierachical Reinforcement Learning aims to make {\color{blue} learning more efficient} by decomposing large problems~\citep{conf/nips/Wen20}.
     \item Novel approach to HRL using Linearly-solvable Markov Decision Processes (LMDPs).
-    \item LMDPs are a <>~\citep{TodorovNIPS2007}.
+    \item LMDPs are {\color{blue} computationally efficient}~\citep{TodorovNIPS2007}.
     %\item Computing optimal policies for LMDPs is equivalent to a probabilistic inference task~\citep{KappenML2012}.
     %\item LMDPs are strongly related to entropy-regularized RL~\citep{optionkeyb} and have been already used in hierarchical settings \citep{saxe2017hierarchy, conf/icaps/Jonsson16}.
     \item {\color{blue}Globally optimal value function} (vs. \textit{hierarchically optimal} or \textit{recursively optimal})~\citep{dietterich2000hierarchical}. 
@@ -135,9 +135,7 @@
     \begin{itemize}
 
         \item At time-step $t$, the agent observes $s_t$ and receives a reward \[ \cR(s_t,\pi) = \cR(s_t) - \lambda\cdot\mathrm{KL}(\pi(\cdot|s_t)\Vert\, \cP(\cdot|s_t)). \]
-
-        \item The aim of the agent is to maximize \[ v^\pi(s) = \EEc{\sum_{t=1}^{T-1} \cR(S_t,\pi) + \cJ(S_T)}{S_1 = s}.\]
-        
+        \item The aim of the agent is to maximize \[ v^\pi(s) = \EEc{\sum_{t=1}^{T-1} \cR(S_t,\pi) + \cJ(S_T)}{S_1 = s}.\]        
        \item We obtain the following Bellman optimality equation 
        \begin{equation*}
             \frac 1 \lambda v(s) = \frac 1 \lambda \cR(s) + \max_\pi \mathbb{E}_{s'\sim\pi(\cdot|s)} \left[ \frac 1 \lambda v(s') - \log \frac {\pi(s'|s)} {\cP(s'|s)} \right] \;\; (\forall s).
@@ -149,7 +147,7 @@
 \begin{frame}{Background - LMDPs (iii) - Eigenvector setting}
     
     \begin{itemize}
-         \item Taking $z(s)=e^{v(s)/\lambda}$ for each $s\in\cS^+$ leads to \[ z(s) = e^{\cR(s)/\lambda} \sum_{s'}\cP(s'|s)z(s'). \]
+         \item Taking $z(s)=e^{v(s)/\lambda}$ for each $s\in\cS^+$ leads to \[ z(s) = e^{\cR(s)/\lambda} \sum_{s'}\cP(s'|s){\color{blue}z(s')}. \]
          \item If $\cP$ and $\cR$ are known, then \[ \mathbf{z} = R P \mathbf{z^+} \text{  where  } R=\text{diag}(e^{\cR(\cdot)/\lambda}) .\]
          %where initially $\mathbf z  = \bf 1$.
         \end{itemize}
@@ -160,8 +158,8 @@
 \begin{itemize}
 \item Alternatively, there is an online {\color{blue} (corrected)} update rule  
         
-         \[ \hat{z}(s_t) \leftarrow (1-\alpha_t) \hat{z}(s_t) + \alpha_t e^{r_t/\lambda}\hat{z}(s_{t+1}) {\color{blue} \frac {\cP(s_{t+1}|s_t)} {\hat{\pi}(s_{t+1}|s_t)}}. \]
-         
+         \[ \hat{z}(s_t) \leftarrow {\pmb{(1-\alpha_t)}} \hat{z}(s_t) + {\pmb{\alpha_t}} e^{r_t/\lambda}\hat{z}(s_{t+1}) {\color{blue} \frac {\cP(s_{t+1}|s_t)} {\hat{\pi}(s_{t+1}|s_t)}}, \]
+samples are in the form of $(s_t, r_t, s_{t+1})$.        
 \item Given a $z$, policies are derived using \[ \pi(s'|s) = \frac {\cP(s'|s)z(s')} {\sum_{s''} \cP(s''|s)z(s'')}.\]
 %\item This process is equivalent to a probabilistic inference task~\citep{KappenML2012}.
 \end{itemize}
@@ -175,13 +173,13 @@
     
     \item For a new LMDP $\cL$ for which the next holds~\citep{TodorovNIPS2009} 
     \begin{equation*}
-        e^{\cJ(\tS)/\lambda} = z(\tS) = \sum_{k=1}^n w_k e^{\cJ_k(\tS)/\lambda}.
+        e^{\cJ(\tS)/\lambda} = z(\tS) = \sum_{k=1}^n {\color{blue} w_k} e^{\cJ_k(\tS)/\lambda} \ \text{for} \ \tS \in \cT_i.
     \end{equation*}
     
     \item Due to linearity, the following is also satisfied
     
     \begin{equation*}
-       z(s) =  \sum_{k=1}^n w_k z_k(s) \ \forall s \in \cS.
+       z(s) =  \sum_{k=1}^n {\color{blue} w_k} z_k(s) \ \forall s \in \cS.
     \end{equation*}
     
     \end{itemize}
@@ -192,8 +190,8 @@
 \begin{frame}{Hierarchical LMDPs (i)}
 
     \begin{itemize}
-        %\item Hierarchical decomposition inspired by the work of Wen et al.~\citep{conf/nips/Wen20}. 
-        \item Given an LMDP $\cL$, its {\color{blue}state space $\cS$ is partitioned} into $L$ subsets $\{\cS_i\}_{i=1}^L$. 
+        \item Inspired by the work of Wen et al.~\citep{conf/nips/Wen20}. 
+        \item For an LMDP $\cL$, its {\color{blue} $\cS$ is partitioned} into $L$ subsets $\{\cS_i\}_{i=1}^L$. 
         \item Each such subset $\cS_i$ induces a subtask, represented by an LMDP $\cL_i=\langle\cS_i,\cT_i,\cP_i,\cR_i,\cJ_i\rangle$:
         \begin{itemize}
         \item $\cT_i$ includes states in $\cS^+\setminus\cS_i$ that are one step away from any $s \in \cS_i$.
@@ -536,7 +534,6 @@ We propose the following alternatives:
     \begin{itemize}
     \item A passenger is located at one of the four corners and he must be carried to a certain corner (excluding the pickup location).
     \item Base LMDPs here are going to each of the corners.
-    \item Sometimes there exist natural equivalence classes in facotres MDPs
 \end{itemize}
 
     \begin{figure}[H]
@@ -563,13 +560,12 @@ We propose the following alternatives:
 
 \section{Contributions and Conclusion}
 \begin{frame}{Contributions}
-\begin{itemize}
-    \item We define a novel scheme based on compositionality for solving subtasks. 
-    \item The subtasks decomposition is at the level of the value function, thus our approach does not suffer
-    from non-stationarity in the online setting. 
-    \item Under mild assumptions, our method converges to the optimal value function.
-    \item {\color{myred} Unlike the options setting, we can retrieve the optimal value function for the full state space 
-    using the value estimates for the exit states.}
+    \begin{itemize}
+    \item Novel scheme based on subtask compositionality. 
+    \item The subtasks decomposition is at the level of the value function.
+    \item Our method converges to the optimal value function.
+    %\item {\color{myred} Unlike the options setting, we can use the value estimates at exit states 
+    %to retrieve $z$ for any $s \in \cS^+$.}
 
 \end{itemize}
 
@@ -578,8 +574,8 @@ We propose the following alternatives:
 \begin{frame}{Conclusion}
 
     \begin{itemize}
-        \item Unlike typical HRL approaches, we no longer need a high-level policy that selects among subgoals (e.g. non-stationarity in SMDPs). 
-        \item Instead, we are able to retrieve the optimal value function for each state thanks to the decomposition of the value function in terms of the values of base LMDPs.
+        \item We are able to retrieve the optimal value function.
+        \item New form of zero-shot learning.
     \end{itemize}
 
 \end{frame}

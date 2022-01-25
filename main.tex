@@ -103,7 +103,7 @@
 \begin{frame}{Introduction}
 
 \begin{itemize}
-    \item Hierachical Reinforcement Learning aims to make {\color{blue} learning more efficient} by decomposing large problems~\citep{conf/nips/Wen20}.
+    \item Hierachical Reinforcement Learning aims to make {\color{blue} learning more efficient} by decomposing large problems. %~\citep{conf/nips/Wen20}.
     \item Novel approach to HRL using Linearly-solvable Markov Decision Processes (LMDPs).
     \item LMDPs are {\color{blue} computationally efficient}~\citep{TodorovNIPS2007}.
     %\item Computing optimal policies for LMDPs is equivalent to a probabilistic inference task~\citep{KappenML2012}.
@@ -190,9 +190,9 @@ samples are in the form of $(s_t, r_t, s_{t+1})$.
 \begin{frame}{Hierarchical LMDPs (i)}
 
     \begin{itemize}
-        \item Inspired by the work of Wen et al.~\citep{conf/nips/Wen20}. 
+        \item Inspired by Wen et al.~\citep{conf/nips/Wen20}. 
         \item For an LMDP $\cL$, its {\color{blue} $\cS$ is partitioned} into $L$ subsets $\{\cS_i\}_{i=1}^L$. 
-        \item Each such subset $\cS_i$ induces a subtask, represented by an LMDP $\cL_i=\langle\cS_i,\cT_i,\cP_i,\cR_i,\cJ_i\rangle$:
+        \item Each $\cS_i$ induces a subtask $\cL_i=\langle\cS_i,\cT_i,\cP_i,\cR_i,\cJ_i\rangle$:
         \begin{itemize}
         \item $\cT_i$ includes states in $\cS^+\setminus\cS_i$ that are one step away from any $s \in \cS_i$.
         \item For $\tau\in\cT_i$,
@@ -304,8 +304,8 @@ Subtask equivalence (for some $\cL_i$ and $\cL_j$) imples a bijective relationsh
             %$z_j^k(\tau)=1$ if $\tau=\tau_k$, and $z_j^k(\tau)=0$ otherwise. This corresponds to an actual reward of $$ for $\tau=\tau_k$, and $$ otherwise.
         \end{cases}
     \]
-    \item Thus, we can solve these {\color{blue} base LMDPs} to obtain {\color{blue} $z_j^1,\ldots,z_j^n$.}
-    \item Having $\hat z(s)$ for each $t \in \cT_j$, then thanks to compositionality,
+    \item Solutions are {\color{blue} optimal $z_j^1,\ldots,z_j^n$.}
+    \item Having $\hat z(s)$ for each $t \in \cT_j$, {\color{blue}compositionality rule}
     \begin{equation*}
         \hat{z}(s)=\hat{z}(\tau_1){\color{blue} z_j^1(s)}+\cdots+\hat{z}(\tau_n){\color{blue} z_j^n(s)} \;\; \forall s\in\cS_i,\forall\cL_i\in\cC_j.
     \end{equation*}
@@ -322,7 +322,11 @@ Subtask equivalence (for some $\cL_i$ and $\cL_j$) imples a bijective relationsh
 
     
    \item For all subtaks, terminal states $\tau_1 \dots \tau_n$ are by definition in $\cE$.
-   \item Having access $\hat{z}_\cE:\cE\rightarrow\mathbb{R}$ and $z_j^1,\ldots,z_j^n$ for the base LMDPs {\color{blue} is enough to represent $\hat z(s) \ \forall s \in \cS$.}
+   \item Enough represent $\hat z(s) \ \forall s \in \cS$:
+        \begin{itemize}
+            \item $\hat{z}_\cE:\cE\rightarrow\mathbb{R}$, 
+            \item for the base LMDPs {\color{blue} $z_j^1,\ldots,z_j^n$}.
+        \end{itemize}
    %\item No need to store an explicit estimate $\hat z(s)$.
    \item Solutions for base LMDPs {\color{blue} can be reused}. 
     
@@ -331,83 +335,83 @@ Subtask equivalence (for some $\cL_i$ and $\cL_j$) imples a bijective relationsh
 \end{frame}
 
 
-\begin{frame}{Hierarchical LMDPs (vi) - Subtask compositionality (iii)}
+%\begin{frame}{Hierarchical LMDPs (vi) - Subtask compositionality (iii)}
 
-\begin{remark}[]
-    
-    If $\hat z(s)$ is optimal for $s \in \cE$, then $\hat z(s)$ for $s \in \cS_i$ will also be optimal. With compositionality, \[\hat z(s) = \hat z(3^L) * z_L(s) + \hat z(3^B) * z_B(s) + \hat z(G) * z_G(s)\]
-    
-    For any $s$ in $\cS_i$. Thus, if $\hat z = z^*$ for $s \in \cE$, then it will be optimal for the interior states as well.
-    
-    
-\end{remark}
+%\begin{remark}[]
+%    
+%    If $\hat z(s)$ is optimal for $s \in \cE$, then $\hat z(s)$ for $s \in \cS_i$ will also be optimal. With compositionality, \[\hat z(s) = \hat z(3^L) * z_L(s) + \hat z(3^B) * z_B(s) + \hat z(G) * z_G(s)\]
+%    
+%    For any $s$ in $\cS_i$. Thus, if $\hat z = z^*$ for $s \in \cE$, then it will be optimal for the interior states as well.
+%    
+%    
+%\end{remark}
 
-\begin{figure}
-\begin{center}
-
-\scalebox{0.6}{
-\begin{tikzpicture}
-\draw[step=0.4,thick,shift={(0.2,0.2)}] (0.8,0.8) grid (4.8, 4.8);
-\draw[step=0.4,thick,shift={(0.2,0.2)}, color=red] (2.8, 2.8) grid (4.8, 4.8);
-
-
-\draw[ultra thick] (1,1) rectangle (5,5);
-\draw[ultra thick] (3,1) -- (3,1.8);
-\draw[ultra thick] (3,2.2) -- (3,3.8);
-\draw[ultra thick, color=red] (3,3) -- (3,5);
-\draw[ultra thick] (1,3) -- (1.8,3);
-\draw[ultra thick] (2.2,3) -- (3.8,3);
-\draw[ultra thick, color=red] (3,3) -- (5,3);
-
-\draw[fill] (0.6,1.8) rectangle (1,2.2);
-\draw[fill] (0.6,3.8) rectangle (1,4.2);
-\draw[fill] (1.8,5) rectangle (2.2,5.4);
-\draw[fill] (1.8,0.6) rectangle (2.2,1);
-\draw[fill] (3.8,0.6) rectangle (4.2,1);
-\draw[fill] (5,1.8) rectangle (5.4,2.2);
-\draw[fill] (5,3.8) rectangle (5.4,4.2);
-\draw[fill] (3.8,5) rectangle (4.2,5.4);
-
-\draw[fill] (2.2,2.2) rectangle (2.6,2.6);
-\draw[fill] (4.2,2.2) rectangle (4.6,2.6);
-\draw[fill] (2.2,4.2) rectangle (2.6,4.6);
-
-\draw[ultra thick, color=red] (4.2,4.2) rectangle (4.6,4.6);
-\draw[ultra thick, color=red] (3.8,2.6) rectangle (4.2,3.4);
-\draw[ultra thick] (1.8,2.6) rectangle (2.2,3.4);
-\draw[ultra thick, color=red] (2.6,3.8) rectangle (3.4,4.2);
-\draw[ultra thick] (2.6,1.8) rectangle (3.4,2.2);
-
-\node at (4.4,4.4) {\small $G$};
-\node at (2,3.2) {\small $2^T$};
-\node at (2,2.8) {\small $1^B$};
-\node at (4,3.2) {\small $4^T$};
-\node at (4,2.8) {\small $3^B$};
-\node at (2.8,4) {\small $3^L$};
-\node at (2.8,2) {\small $4^L$};
-\node at (3.2,4) {\small $1^R$};
-\node at (3.2,2) {\small $2^R$};
-
-\draw[step=0.4,thin,shift={(0.2,0)}] (8.799,1.999) grid (10.8,4);
-\draw[ultra thick] (9,3.2) -- (8.6,3.2) -- (8.6,2.8) -- (9,2.8) -- (9,2) -- (9.8,2);
-\draw[ultra thick] (9,3.2) -- (9,4) -- (9.8,4) -- (9.8,4.4) -- (10.2,4.4) -- (10.2,4);
-\draw[ultra thick] (10.2,4) -- (11,4) -- (11,3.2) -- (11.4,3.2) -- (11.4,2.8) -- (11,2.8);
-\draw[ultra thick] (9.8,2) -- (9.8,1.6) -- (10.2,1.6) -- (10.2,2) -- (11,2) -- (11,2.8);
-\draw[ultra thick] (10.2,3.2) rectangle (10.6,3.6);
-
-\node at (10.4,3.4) {\small $G$};
-\node at (8.8,3)    {\small $L$};
-\node at (11.2,3)   {\small $R$};
-\node at (10,1.8)   {\small $B$};
-\node at (10,4.2)   {\small $T$};
-
-\end{tikzpicture}
-}
-\end{center}
-\end{figure}
-    
-\end{frame}
-
+%\begin{figure}
+%\begin{center}
+%
+%\scalebox{0.6}{
+%\begin{tikzpicture}
+%\draw[step=0.4,thick,shift={(0.2,0.2)}] (0.8,0.8) grid (4.8, 4.8);
+%\draw[step=0.4,thick,shift={(0.2,0.2)}, color=red] (2.8, 2.8) grid (4.8, 4.8);
+%
+%
+%\draw[ultra thick] (1,1) rectangle (5,5);
+%\draw[ultra thick] (3,1) -- (3,1.8);
+%\draw[ultra thick] (3,2.2) -- (3,3.8);
+%\draw[ultra thick, color=red] (3,3) -- (3,5);
+%\draw[ultra thick] (1,3) -- (1.8,3);
+%\draw[ultra thick] (2.2,3) -- (3.8,3);
+%\draw[ultra thick, color=red] (3,3) -- (5,3);
+%
+%\draw[fill] (0.6,1.8) rectangle (1,2.2);
+%\draw[fill] (0.6,3.8) rectangle (1,4.2);
+%\draw[fill] (1.8,5) rectangle (2.2,5.4);
+%\draw[fill] (1.8,0.6) rectangle (2.2,1);
+%\draw[fill] (3.8,0.6) rectangle (4.2,1);
+%\draw[fill] (5,1.8) rectangle (5.4,2.2);
+%\draw[fill] (5,3.8) rectangle (5.4,4.2);
+%\draw[fill] (3.8,5) rectangle (4.2,5.4);
+%
+%\draw[fill] (2.2,2.2) rectangle (2.6,2.6);
+%\draw[fill] (4.2,2.2) rectangle (4.6,2.6);
+%\draw[fill] (2.2,4.2) rectangle (2.6,4.6);
+%
+%\draw[ultra thick, color=red] (4.2,4.2) rectangle (4.6,4.6);
+%\draw[ultra thick, color=red] (3.8,2.6) rectangle (4.2,3.4);
+%\draw[ultra thick] (1.8,2.6) rectangle (2.2,3.4);
+%\draw[ultra thick, color=red] (2.6,3.8) rectangle (3.4,4.2);
+%\draw[ultra thick] (2.6,1.8) rectangle (3.4,2.2);
+%
+%\node at (4.4,4.4) {\small $G$};
+%\node at (2,3.2) {\small $2^T$};
+%\node at (2,2.8) {\small $1^B$};
+%\node at (4,3.2) {\small $4^T$};
+%\node at (4,2.8) {\small $3^B$};
+%\node at (2.8,4) {\small $3^L$};
+%\node at (2.8,2) {\small $4^L$};
+%\node at (3.2,4) {\small $1^R$};
+%\node at (3.2,2) {\small $2^R$};
+%
+%\draw[step=0.4,thin,shift={(0.2,0)}] (8.799,1.999) grid (10.8,4);
+%\draw[ultra thick] (9,3.2) -- (8.6,3.2) -- (8.6,2.8) -- (9,2.8) -- (9,2) -- (9.8,2);
+%\draw[ultra thick] (9,3.2) -- (9,4) -- (9.8,4) -- (9.8,4.4) -- (10.2,4.4) -- (10.2,4);
+%\draw[ultra thick] (10.2,4) -- (11,4) -- (11,3.2) -- (11.4,3.2) -- (11.4,2.8) -- (11,2.8);
+%\draw[ultra thick] (9.8,2) -- (9.8,1.6) -- (10.2,1.6) -- (10.2,2) -- (11,2) -- (11,2.8);
+%\draw[ultra thick] (10.2,3.2) rectangle (10.6,3.6);
+%
+%\node at (10.4,3.4) {\small $G$};
+%\node at (8.8,3)    {\small $L$};
+%\node at (11.2,3)   {\small $R$};
+%\node at (10,1.8)   {\small $B$};
+%\node at (10,4.2)   {\small $T$};
+%
+%\end{tikzpicture}
+%}
+%\end{center}
+%\end{figure}
+%    
+%\end{frame}
+%
 \section{Algorithms}
 
 \begin{frame}{Eigenvector algorithm (i)}
@@ -427,22 +431,22 @@ Subtask equivalence (for some $\cL_i$ and $\cL_j$) imples a bijective relationsh
     
 \end{frame}
 
-\begin{frame}{Eigenvector algorithm (ii) - Convergence proof}
-
-\begin{lemma}[1]
-    If the reward of each terminal state $t\in\cT_i$ equals its optimal value in $\cL$, i.e.~$z_i(t)=z(t)$, the optimal value of each non-terminal state $s\in\cS_i$ equals its optimal value in $\cL$, i.e.~$z_i(s)=z(s)$.
-\end{lemma}
-
-\begin{lemma}[2]
-    The solution to  ${\bf z}_\cE=G{\bf z}_\cE$ is unique.
-\end{lemma}
-    
-
-\begin{lemma}[3]
-    For each subtask $\cL_i$ and state $s\in\cS_i^+$, it holds that \[ z_i^1(s)+\cdots+z_i^n(s)\leq 1 .\]
-\end{lemma}
-
-\end{frame}
+%\begin{frame}{Eigenvector algorithm (ii) - Convergence proof}
+%
+%\begin{lemma}[1]
+%    If the reward of each terminal state $t\in\cT_i$ equals its optimal value in $\cL$, i.e.~$z_i(t)=z(t)$, the optimal value of each non-terminal state $s\in\cS_i$ equals its optimal value in $\cL$, i.e.~$z_i(s)=z(s)$.
+%\end{lemma}
+%
+%\begin{lemma}[2]
+%    The solution to  ${\bf z}_\cE=G{\bf z}_\cE$ is unique.
+%\end{lemma}
+%    
+%
+%\begin{lemma}[3]
+%    For each subtask $\cL_i$ and state $s\in\cS_i^+$, it holds that \[ z_i^1(s)+\cdots+z_i^n(s)\leq 1 .\]
+%\end{lemma}
+%
+%\end{frame}
 
 %\begin{frame}{Eigenvector algorithm (iii) - Convergence proof}
 %Extending on previously stated lemmas:
@@ -498,21 +502,21 @@ We propose the following alternatives:
 
 
 \section{Experiments and results}
-\begin{frame}{Experiments - Rooms domain}
-
-
-\begin{itemize}
-    \item We varied the size of the rooms as well as the number of rooms.
-\end{itemize}
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.25]{Figures/grid_domain_VF.png}
-
-\label{fig:vf_grid}
-\end{figure}
-    
-\end{frame}
+%\begin{frame}{Experiments - Rooms domain}
+%
+%
+%\begin{itemize}
+%    \item We varied the size of the rooms as well as the number of rooms.
+%\end{itemize}
+%
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=0.25]{Figures/grid_domain_VF.png}
+%
+%\label{fig:vf_grid}
+%\end{figure}
+%    
+%\end{frame}
 
 \begin{frame}{Results - Rooms domain}
 
@@ -529,21 +533,20 @@ We propose the following alternatives:
     \end{frame}
 
 
-\begin{frame}{Experiments - Taxi domain}
-    
-    \begin{itemize}
-    \item A passenger is located at one of the four corners and he must be carried to a certain corner (excluding the pickup location).
-    \item Base LMDPs here are going to each of the corners.
-\end{itemize}
-
-    \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.35]{Figures/taxi_dom_VF.png}
-    
-    \label{fig:vf_taxi}
-    \end{figure}
-
-\end{frame}
+%\begin{frame}{Experiments - Taxi domain}
+%    
+%    \begin{itemize}
+%    \item A passenger is located at one of the four corners and he must be carried to a certain corner (excluding the pickup location).
+%    \item Base LMDPs here are going to each of the corners.
+%\end{itemize}
+%    \begin{figure}[H]
+%    \centering
+%    \includegraphics[scale=0.35]{Figures/taxi_dom_VF.png}
+%    
+%    \label{fig:vf_taxi}
+%    \end{figure}
+%
+%\end{frame}
 
 
 \begin{frame}{Results - Taxi domain}

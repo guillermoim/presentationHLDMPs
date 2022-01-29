@@ -98,7 +98,7 @@
 \tableofcontents
 \end{frame}
 
-\section{Introduction}
+\section{Introduction and related work}
 
 \begin{frame}{Introduction}
 
@@ -111,6 +111,14 @@
     \item {\color{blue}Globally optimal value function} (vs. \textit{hierarchically optimal} or \textit{recursively optimal})~\citep{dietterich2000hierarchical}. 
 \end{itemize}
     
+\end{frame}
+
+\begin{frame}{Related work}
+   \begin{itemize}
+       \item Concurrent compositionality of tasks~\citep*{van2019composing}.
+       \item MAXQ for LMDPs~\citep*{conf/icaps/Jonsson16}.
+       \item Hierarchical multitask LMDPs~\citep*{saxe2017hierarchy}.
+   \end{itemize}
 \end{frame}
 
 \section{Background}
@@ -135,34 +143,26 @@
     \begin{itemize}
 
         \item At time-step $t$, the agent observes $s_t$ and receives a reward \[ \cR(s_t,\pi) = \cR(s_t) - \lambda\cdot\mathrm{KL}(\pi(\cdot|s_t)\Vert\, \cP(\cdot|s_t)). \]
-        \item The aim of the agent is to maximize \[ v^\pi(s) = \EEc{\sum_{t=1}^{T-1} \cR(S_t,\pi) + \cJ(S_T)}{S_1 = s}.\]        
-       \item We obtain the following Bellman optimality equation 
-       \begin{equation*}
-            \frac 1 \lambda v(s) = \frac 1 \lambda \cR(s) + \max_\pi \mathbb{E}_{s'\sim\pi(\cdot|s)} \left[ \frac 1 \lambda v(s') - \log \frac {\pi(s'|s)} {\cP(s'|s)} \right] \;\; (\forall s).
-        \end{equation*}
+        %\item The aim of the agent is to maximize \[ v^\pi(s) = \EEc{\sum_{t=1}^{T-1} \cR(S_t,\pi) + \cJ(S_T)}{S_1 = s}.\]        
+        %\item We obtain the following Bellman optimality equation 
+        %\begin{equation*}
+        %    \frac 1 \lambda v(s) = \frac 1 \lambda \cR(s) + \max_\pi \mathbb{E}_{s'\sim\pi(\cdot|s)} \left[ \frac 1 \lambda v(s') - \log \frac {\pi(s'|s)} {\cP(s'|s)} \right] \;\; (\forall s).
+        %\end{equation*}
+        \item Taking $z(s)=e^{v(s)/\lambda}$ for each $s\in\cS^+$ leads to \[ z(s) = e^{\cR(s)/\lambda} \sum_{s'}\cP(s'|s){\color{blue}z(s')}. \]
 
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Background - LMDPs (iii) - Eigenvector setting}
+\begin{frame}{Background - LMDPs (iii) - Solution}
     
     \begin{itemize}
-         \item Taking $z(s)=e^{v(s)/\lambda}$ for each $s\in\cS^+$ leads to \[ z(s) = e^{\cR(s)/\lambda} \sum_{s'}\cP(s'|s){\color{blue}z(s')}. \]
+         
          \item If $\cP$ and $\cR$ are known, then \[ \mathbf{z} = R P \mathbf{z^+} \text{  where  } R=\text{diag}(e^{\cR(\cdot)/\lambda}) .\]
          %where initially $\mathbf z  = \bf 1$.
-        \end{itemize}
-\end{frame}
-
-\begin{frame}{Background - LMDPs (iii) - Online setting}
-
-\begin{itemize}
-\item Alternatively, there is an online {\color{blue} (corrected)} update rule  
-        
+         \item Alternatively, there is an online {\color{blue} (corrected)} update rule  
          \[ \hat{z}(s_t) \leftarrow {\pmb{(1-\alpha_t)}} \hat{z}(s_t) + {\pmb{\alpha_t}} e^{r_t/\lambda}\hat{z}(s_{t+1}) {\color{blue} \frac {\cP(s_{t+1}|s_t)} {\hat{\pi}(s_{t+1}|s_t)}}, \]
-samples are in the form of $(s_t, r_t, s_{t+1})$.        
-\item Given a $z$, policies are derived using \[ \pi(s'|s) = \frac {\cP(s'|s)z(s')} {\sum_{s''} \cP(s''|s)z(s'')}.\]
-%\item This process is equivalent to a probabilistic inference task~\citep{KappenML2012}.
-\end{itemize}
+        samples are in the form of $(s_t, r_t, s_{t+1})$.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Background - LMDPs (iv) - Compositionality}
@@ -304,7 +304,7 @@ Subtask equivalence (for some $\cL_i$ and $\cL_j$) imples a bijective relationsh
             %$z_j^k(\tau)=1$ if $\tau=\tau_k$, and $z_j^k(\tau)=0$ otherwise. This corresponds to an actual reward of $$ for $\tau=\tau_k$, and $$ otherwise.
         \end{cases}
     \]
-    \item Solutions are {\color{blue} optimal $z_j^1,\ldots,z_j^n$.}
+    \item Solutions $\rightarrow$ {\color{blue} optimal $z_j^1,\ldots,z_j^n$.}
     \item Having $\hat z(s)$ for each $t \in \cT_j$, {\color{blue}compositionality rule}
     \begin{equation*}
         \hat{z}(s)=\hat{z}(\tau_1){\color{blue} z_j^1(s)}+\cdots+\hat{z}(\tau_n){\color{blue} z_j^n(s)} \;\; \forall s\in\cS_i,\forall\cL_i\in\cC_j.
@@ -501,7 +501,7 @@ We propose the following alternatives:
 
 
 
-\section{Experiments and results}
+\section{Experimental results}
 %\begin{frame}{Experiments - Rooms domain}
 %
 %
@@ -518,7 +518,7 @@ We propose the following alternatives:
 %    
 %\end{frame}
 
-\begin{frame}{Results - Rooms domain}
+\begin{frame}{N-Rooms domain}
 
     \begin{figure}[H]
     \centering
@@ -549,7 +549,7 @@ We propose the following alternatives:
 %\end{frame}
 
 
-\begin{frame}{Results - Taxi domain}
+\begin{frame}{Taxi domain}
 
 \begin{figure}[H]
 \centering
@@ -563,19 +563,17 @@ We propose the following alternatives:
 
 \section{Contributions and Conclusion}
 \begin{frame}{Contributions}
+    \textbf{Contributions}
+
     \begin{itemize}
-    \item Novel scheme based on subtask compositionality. 
+    \item Novel scheme based on concurrent and hierarchical compositionality. 
     \item The subtasks decomposition is at the level of the value function.
     \item Our method converges to the optimal value function.
     %\item {\color{myred} Unlike the options setting, we can use the value estimates at exit states 
     %to retrieve $z$ for any $s \in \cS^+$.}
+    \end{itemize}
 
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Conclusion}
-
+    \textbf{Conlusion}
     \begin{itemize}
         \item We are able to retrieve the optimal value function.
         \item New form of zero-shot learning.

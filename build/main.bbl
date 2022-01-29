@@ -23,6 +23,12 @@ Kappen, H.~J., G\'omez, V., and Opper, M. (2012).
 \newblock Optimal control as a graphical model inference problem.
 \newblock {\em Mach. Learn.}, 87(2):159--182.
 
+\bibitem[Saxe et~al., 2017]{saxe2017hierarchy}
+Saxe, A.~M., Earle, A.~C., and Rosman, B. (2017).
+\newblock {Hierarchy through composition with multitask LMDPs}.
+\newblock In {\em International Conference on Machine Learning}, pages
+  3017--3026. PMLR.
+
 \bibitem[Todorov, 2006]{TodorovNIPS2007}
 Todorov, E. (2006).
 \newblock Linearly-solvable {M}arkov decision problems.
@@ -34,6 +40,12 @@ Todorov, E. (2009).
 \newblock Compositionality of optimal control laws.
 \newblock {\em Advances in Neural Information Processing Systems (NIPS)}, pages
   1856--1864.
+
+\bibitem[Van~Niekerk et~al., 2019]{van2019composing}
+Van~Niekerk, B., James, S., Earle, A., and Rosman, B. (2019).
+\newblock Composing value functions in reinforcement learning.
+\newblock In {\em International Conference on Machine Learning}, pages
+  6401--6409. PMLR.
 
 \bibitem[Wen et~al., 2020]{conf/nips/Wen20}
 Wen, Z., Precup, D., Ibrahimi, M., Barreto, A., Van~Roy, B., and Singh, S.

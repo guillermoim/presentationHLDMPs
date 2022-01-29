@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.12.27)  27 JAN 2022 11:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.12.27)  27 JAN 2022 11:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -965,12 +965,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ] [6
 
-]
-Overfull \hbox (1.16158pt too wide) detected at line 145
-[]\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s\OT1/cmr/m/n/10.95 ) = []\OMS/cmsy/m/n/10.95 R\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s\OT1/cmr/m/n/10.95 ) + [] \U/msb/m/n/10.95 E[] []   \OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 8\OML/cmm/m/it/10.95 s\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 :
- []
-
-[7
+] [7
 
 ] [8
 
@@ -1010,17 +1005,17 @@ Overfull \vbox (4.94643pt too high) detected at line 292
 ] [21
 
 ]
-<Figures/nroom_3_3-1.png, id=202, 611.6451pt x 427.5975pt>
+<Figures/nroom_3_3-1.png, id=208, 611.6451pt x 427.5975pt>
 File: Figures/nroom_3_3-1.png Graphic file (type png)
 <use Figures/nroom_3_3-1.png>
 Package pdftex.def Info: Figures/nroom_3_3-1.png  used on input line 533.
 (pdftex.def)             Requested size: 122.32684pt x 85.51797pt.
-<Figures/nroom_5_5-1.png, id=203, 611.6451pt x 427.5975pt>
+<Figures/nroom_5_5-1.png, id=209, 611.6451pt x 427.5975pt>
 File: Figures/nroom_5_5-1.png Graphic file (type png)
 <use Figures/nroom_5_5-1.png>
 Package pdftex.def Info: Figures/nroom_5_5-1.png  used on input line 533.
 (pdftex.def)             Requested size: 122.32684pt x 85.51797pt.
-<Figures/nroom_8_8-1.png, id=204, 611.6451pt x 427.5975pt>
+<Figures/nroom_8_8-1.png, id=210, 611.6451pt x 427.5975pt>
 File: Figures/nroom_8_8-1.png Graphic file (type png)
 <use Figures/nroom_8_8-1.png>
 Package pdftex.def Info: Figures/nroom_8_8-1.png  used on input line 533.
@@ -1032,12 +1027,12 @@ Overfull \vbox (6.29004pt too high) detected at line 533
 [22
 
  <./Figures/nroom_3_3-1.png (PNG copy)> <./Figures/nroom_5_5-1.png (PNG copy)> <./Figures/nroom_8_8-1.png (PNG copy)>]
-<Figures/taxi_5-1.png, id=211, 611.6451pt x 428.0793pt>
+<Figures/taxi_5-1.png, id=217, 611.6451pt x 428.0793pt>
 File: Figures/taxi_5-1.png Graphic file (type png)
 <use Figures/taxi_5-1.png>
 Package pdftex.def Info: Figures/taxi_5-1.png  used on input line 562.
 (pdftex.def)             Requested size: 134.56233pt x 94.17773pt.
-<Figures/taxi_10-1.png, id=212, 611.6451pt x 428.0793pt>
+<Figures/taxi_10-1.png, id=218, 611.6451pt x 428.0793pt>
 File: Figures/taxi_10-1.png Graphic file (type png)
 <use Figures/taxi_10-1.png>
 Package pdftex.def Info: Figures/taxi_10-1.png  used on input line 562.
@@ -1048,14 +1043,15 @@ Package pdftex.def Info: Figures/taxi_10-1.png  used on input line 562.
 
 ] [25
 
-] [26
-
 ] (/Users/infante/Desktop/latex-projects/presentationHLDMPs/build/main.bbl
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\translate ' on input line 1.
 
-) [27
+) [26
+
+] [27
+
 
 ] [28
 
@@ -1072,21 +1068,21 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
  (/Users/infante/Desktop/latex-projects/presentationHLDMPs/build/main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 068F257ECF39C9448E341DCA155132A0;871.
+(rerunfilecheck)             Checksum: 57854A89BBA39AC515743FD954836265;947.
  ) 
 Here is how much of TeX's memory you used:
- 28736 strings out of 478994
- 576987 string characters out of 5858183
- 860137 words of memory out of 5000000
- 45510 multiletter control sequences out of 15000+600000
+ 28744 strings out of 478994
+ 577177 string characters out of 5858183
+ 859248 words of memory out of 5000000
+ 45516 multiletter control sequences out of 15000+600000
  416245 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  131i,13n,132p,1860b,833s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/infante/Desktop/latex-projects/presentationHLDMPs/build/main.pdf (28 pages, 1934269 bytes).
+Output written on /Users/infante/Desktop/latex-projects/presentationHLDMPs/build/main.pdf (28 pages, 1930300 bytes).
 PDF statistics:
- 326 PDF objects out of 1000 (max. 8388607)
- 261 compressed objects within 3 object streams
- 74 named destinations out of 1000 (max. 500000)
+ 332 PDF objects out of 1000 (max. 8388607)
+ 267 compressed objects within 3 object streams
+ 76 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,6 +1,0 @@
-\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
-\beamer@sectionintoc {2}{Background}{5}{0}{2}
-\beamer@sectionintoc {3}{Hierarchical LMDPs}{11}{0}{3}
-\beamer@sectionintoc {4}{Algorithms}{17}{0}{4}
-\beamer@sectionintoc {5}{Experiments and results}{21}{0}{5}
-\beamer@sectionintoc {6}{Contributions and Conclusion}{24}{0}{6}

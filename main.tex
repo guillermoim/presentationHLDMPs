@@ -145,7 +145,7 @@
         \item Learning agent follows a policy $\pi:\cS\rightarrow\Delta(\cS^+)$.
     \end{itemize}
 
-    At time-step $t$, the agent observes $s_t$ and receives a reward \[ \cR(s_t,\pi) = \cR(s_t) - \lambda\cdot\mathrm{KL}(\pi(\cdot|s_t)\Vert\, \cP(\cdot|s_t))\] and travels to $s_{t+1} \sim \pi(\cdot\lvert s_t)$.
+    At time-step $t$, the agent observes $s_t$ and receives a reward \[ \cR(s_t,\pi) = \cR(s_t) - \lambda\cdot D_\mathrm{KL}(\pi(\cdot|s_t)\Vert\, \cP(\cdot|s_t))\] and travels to $s_{t+1} \sim \pi(\cdot\lvert s_t)$.
 
 \end{frame}
 
@@ -337,7 +337,7 @@
         \item Enough to represent $\hat z(s) \ \forall s \in \cS$:
               \begin{itemize}
                   \item $\hat{z}_\cE:\cE\rightarrow\mathbb{R}$,
-                  \item for the base LMDPs {\color{blue} $z_j^1,\ldots,z_j^n$}.
+                  \item {\color{blue} $z_j^1,\ldots,z_j^n$} for the base LMDPs.
               \end{itemize}
               %\item No need to store an explicit estimate $\hat z(s)$.
         \item Solutions for base LMDPs {\color{blue} can be reused}.
@@ -436,50 +436,10 @@
               \begin{equation*}\label{eq:exits}
                   {\bf z}_\cE=G{\bf z}_\cE.
               \end{equation*}
-        \item This corresponds to an eigenvector problem.
         \item Value estimates for $s \in \cS \setminus \cE$ are obtained afterwards.
     \end{itemize}
 
 \end{frame}
-
-%\begin{frame}{Eigenvector algorithm (ii) - Convergence proof}
-%
-%\begin{lemma}[1]
-%    If the reward of each terminal state $t\in\cT_i$ equals its optimal value in $\cL$, i.e.~$z_i(t)=z(t)$, the optimal value of each non-terminal state $s\in\cS_i$ equals its optimal value in $\cL$, i.e.~$z_i(s)=z(s)$.
-%\end{lemma}
-%
-%\begin{lemma}[2]
-%    The solution to  ${\bf z}_\cE=G{\bf z}_\cE$ is unique.
-%\end{lemma}
-%    
-%
-%\begin{lemma}[3]
-%    For each subtask $\cL_i$ and state $s\in\cS_i^+$, it holds that \[ z_i^1(s)+\cdots+z_i^n(s)\leq 1 .\]
-%\end{lemma}
-%
-%\end{frame}
-
-%\begin{frame}{Eigenvector algorithm (iii) - Convergence proof}
-%Extending on previously stated lemmas:
-%%\begin{itemize}
-%    %\item The base case happens at terminal states $t_\ell\in\cT_i$. In such case $z_i^1(t_\ell)+\cdots+z_i^n(t_\ell) = z_i^\ell(t_\ell) = 1$.
-%    %\item The Bellman equation for the base LMDPs is \[
-%    %z_i^1(s)+\cdots+z_i^n(s)=
-%    %{\color{orange} e^{\cR_i(s)/\lambda}}
-%    %\sum_{s'}{\color{red} P(s'|s)}\left[z_i^1(s')+\cdots+z_i^n(s')\right].
-%    %\]
-%
-%\item ${\color{orange} e^{\cR_i(s)/\lambda} < 1}$ since $\cR_i(s) < 0$ holds.
-%
-%\item And since $\left[z_i^1(s')+\cdots+z_i^n(s')\right] \leq 1$ also holds, by induction $z_i^1(s)+\cdots+z_i^n(s) \leq 1$.
-%
-%\item Thus, in the equation\[ z_\cE = G z_\cE \]G has spectral radius at most 1. The power iteration method will find the eigenvector for the the largest eigenvalue 1.
-%
-%
-%
-%\end{itemize}
-%    
-%\end{frame}
 
 \begin{frame}{Online algorithm (i)}
 
@@ -511,21 +471,6 @@
 
 
 \section{Experiments and results}
-%\begin{frame}{Experiments - Rooms domain}
-%
-%
-%\begin{itemize}
-%    \item We varied the size of the rooms as well as the number of rooms.
-%\end{itemize}
-%
-%\begin{figure}[H]
-%\centering
-%\includegraphics[scale=0.25]{Figures/grid_domain_VF.png}
-%
-%\label{fig:vf_grid}
-%\end{figure}
-%    
-%\end{frame}
 
 \begin{frame}{Results - Rooms domain}
 
@@ -568,7 +513,7 @@
 
 \end{frame}
 
-\begin{frame}[allowframebreaks]{}
+\begin{frame}[allowframebreaks, noframenumbering]{}
     \bibliographystyle{apalike}
     \bibliography{bibliography}
 \end{frame}
